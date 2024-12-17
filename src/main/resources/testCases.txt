@@ -1,0 +1,55 @@
+https://solvdportal-my.sharepoint.com/:x:/g/personal/lperez_solvd_com/EQ5FgpOASVZAiS5tBj04FEkBoNptEPbUoP1SEx3XIECD1g?e=XoW7eb
+
+I've chosen the magento e-commerce
+case Id	Title	Steps	Expected Results
+
+1	create account
+
+"1. click on create account button
+2. complete flieds (33goal*lu)
+3. click on create account button"
+
+"Go to new page that has:
+-  succesfull message
+- Correct data"
+
+
+2	sign in
+
+"1. click on signin  button
+2. enter mail (lucasp149@gmail.com) and passs (33goal*lu)
+3. click on signin button"
+
+redirected to user page with correct name (Lucas Perez) and mail (lucasp149@gmail.com)
+
+
+3	add product to cart
+
+"1. Find the first product in HOT SELLERS
+2. Choose size
+3. Choose color
+4. Add to cart"
+
+There should be one product on the cart
+
+
+4	discard product from cart
+
+"1. Find the first product in HOT SELLERS
+2. Choose size
+3. Choose color
+4. Add to cart
+5. go to cart
+6. click on trashcan button
+7. click ""OK"" on the modal"
+
+There should be no products in the cart ("You have no items in your shopping cart"
+
+
+5	search for a product
+
+"1. Click on search input
+2. type ""abominable hoodie"" and press ENTER
+3. Find the first result"
+
+The first result title should be "Abominable Hoodie"
