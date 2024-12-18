@@ -1,23 +1,23 @@
 https://solvdportal-my.sharepoint.com/:x:/g/personal/lperez_solvd_com/EQ5FgpOASVZAiS5tBj04FEkBoNptEPbUoP1SEx3XIECD1g?e=XoW7eb
 
-I've chosen the magento e-commerce
+I've chosen the magento e-commerce: https://magento.softwaretestingboard.com
 case Id	Title	Steps	Expected Results
 
 1	create account
 
 "1. click on create account button
-2. complete flieds (33goal*lu)
+2. complete fields (33goal*lu)
 3. click on create account button"
 
 "Go to new page that has:
--  succesfull message
+-  successful message
 - Correct data"
 
 
 2	sign in
 
 "1. click on signin  button
-2. enter mail (lucasp149@gmail.com) and passs (33goal*lu)
+2. enter mail (lucasp149@gmail.com) and pass (33goal*lu)
 3. click on signin button"
 
 redirected to user page with correct name (Lucas Perez) and mail (lucasp149@gmail.com)
