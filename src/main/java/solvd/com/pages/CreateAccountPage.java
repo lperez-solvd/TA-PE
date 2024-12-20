@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CreateAccountPage {
+public class CreateAccountPage  extends AbstractPage{
 
     WebDriver driver;
     @FindBy(id = "form-validate")
@@ -29,11 +29,11 @@ public class CreateAccountPage {
     @FindBy(xpath = "//button[@title='Create an Account']")
     WebElement submitButton;
 
-
     public CreateAccountPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
+
     }
+
 
     public WebElement getRegisterForm() {
         return registerForm;
@@ -67,12 +67,26 @@ public class CreateAccountPage {
      * Send text to inputs
      *
      * */
-    public void enterText(String name, WebElement element) {
-        element.sendKeys(name);
+    public void enterName(String name) {
+        sendText(name,nameInput);
     }
 
-    public void clickSubmitButton() {
-        submitButton.click();
+    public void enterLastName(String lastName){
+        sendText(lastName,lastNameInput);
+    }
+
+    public void enterEmail(String email){
+        sendText(email,emailInput);
+    }
+
+    public void enterPass(String password){
+        sendText(password,passwordInput);
+        sendText(password,passwordConfirmation);
+    }
+
+    public CreateAccountSuccessPage clickSubmitButton() {
+        clickOnElement(submitButton);
+        return new CreateAccountSuccessPage(driver);
     }
 
 

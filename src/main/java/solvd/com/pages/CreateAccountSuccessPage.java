@@ -5,19 +5,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CreateAccountSuccessPage {
-    WebDriver driver;
+public class CreateAccountSuccessPage extends AbstractPage {
 
     @FindBy(xpath = "//div[@role='alert']")
     WebElement alertMessage;
 
     public CreateAccountSuccessPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
+
     }
 
+
     public String getAlertMessage() {
-        return alertMessage.getText();
+        return getTextFromElement(alertMessage);
     }
 
 

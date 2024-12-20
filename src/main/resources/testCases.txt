@@ -10,8 +10,7 @@ case Id	Title	Steps	Expected Results
 3. click on create account button"
 
 "Go to new page that has:
--  successful message
-- Correct data"
+-  successful message"
 
 
 2	sign in

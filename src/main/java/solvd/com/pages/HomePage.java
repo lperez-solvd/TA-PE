@@ -1,66 +1,96 @@
 package solvd.com.pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HomePage {
-    WebDriver driver;
+import java.time.Duration;
+
+public class HomePage extends AbstractPage {
 
     @FindBy(xpath = "//a[contains(text(),'Create an Account')]")
     WebElement createAccountButton;
 
     @FindBy(xpath = "//a[contains(text(),'Sign In')]")
     WebElement signInButton;
-    @FindBy(xpath = "//div[@class='block-content']//ol//li[1]//div[@option-id='166']")
+    @FindBy(xpath = "//ol//li[1]//div[@id='option-label-size-143-item-167']")
     WebElement firstHotSellersSize;
-    @FindBy(xpath = "//div[@class='block-content']//ol//li[1]//div[@option-id='56']")
+    @FindBy(xpath = "//ol//li[1]//div[@id='option-label-color-93-item-56']")
     WebElement firstHotSellersColor;
     @FindBy(xpath = "//div[@class='block-content']//ol//li[1]//button[@type='submit']")
     WebElement firstHotSellersAddButton;
-    @FindBy(xpath = "//div[@class='block-content']//ol//li[1]//button[@type='submit']")
+    @FindBy(xpath = "//span[@class='counter-number']")
     WebElement cartElementsCounter;
     @FindBy(xpath = "//ol[@id='mini-cart']//li[1]//a[@title='Remove item']")
     WebElement firstElementInCartDeleteButton;
     @FindBy(xpath = "//aside[@role='dialog']//footer//button[contains(span,'OK')]")
     WebElement acceptDeletionButton;
+    @FindBy(xpath = "//div[@id='ui-id-1']//strong[@class]")
+    WebElement cartMessage;
+    @FindBy(id = "search")
+    WebElement searchInput;
+    @FindBy(xpath = "//form[@id='search_mini_form']//button")
+    WebElement searchButton;
+    @FindBy(xpath = "//div[@data-block='minicart']//a//span[@class='text']/..")
+    WebElement openCartButton;
 
     public HomePage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
 
-    public void clickCreateAccountButton() {
-        createAccountButton.click();
+    public WebElement getCartElementsCounter() {
+        return cartElementsCounter;
     }
 
-    public void clickSingInButton() {
+    public CreateAccountPage clickCreateAccountButton() {
+        clickOnElement(createAccountButton);
+        return new CreateAccountPage(driver);
+    }
+
+    public SignInPage clickSingInButton() {
         signInButton.click();
+        return new SignInPage(driver);
     }
 
     public void chooseSize() {
-        firstHotSellersSize.click();
+        clickOnElement(firstHotSellersSize);
     }
 
     public void chooseColor() {
-        firstHotSellersColor.click();
+        clickOnElement(firstHotSellersColor);
     }
 
     public void clickAddToCartButton() {
-        firstHotSellersAddButton.click();
+        clickOnElement(firstHotSellersAddButton);
     }
 
     public String getNumberOfElementsInCart() {
-        return cartElementsCounter.getText();
+        return getTextFromElement(cartElementsCounter);
+    }
+
+    public void clickOnCart() {
+
+        clickOnElement(openCartButton);
     }
 
     public void deleteFirstElementInCart() {
-        firstElementInCartDeleteButton.click();
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(d -> firstElementInCartDeleteButton.isEnabled());
+        clickOnElement(firstElementInCartDeleteButton);
     }
 
     public void acceptDeletion() {
-        acceptDeletionButton.click();
+        clickOnElement(acceptDeletionButton);
+    }
+
+    public String getCartMessage() {
+        return getTextFromElement(cartMessage);
     }
 }
