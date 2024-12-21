@@ -1,16 +1,15 @@
 package solvd.com.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
 
 public class HomePage extends AbstractPage {
 
@@ -45,9 +44,7 @@ public class HomePage extends AbstractPage {
     }
 
 
-    public WebElement getCartElementsCounter() {
-        return cartElementsCounter;
-    }
+
 
     public CreateAccountPage clickCreateAccountButton() {
         clickOnElement(createAccountButton);
@@ -76,7 +73,9 @@ public class HomePage extends AbstractPage {
     }
 
     public void clickOnCart() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
+        WebElement spanElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.counter.qty")));
         clickOnElement(openCartButton);
     }
 
@@ -86,6 +85,12 @@ public class HomePage extends AbstractPage {
         clickOnElement(firstElementInCartDeleteButton);
     }
 
+    public void alternativeDeleteFirstElementInCart() {
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a.action.delete")));
+        element.click();
+    }
+
     public void acceptDeletion() {
         clickOnElement(acceptDeletionButton);
     }
@@ -93,4 +98,12 @@ public class HomePage extends AbstractPage {
     public String getCartMessage() {
         return getTextFromElement(cartMessage);
     }
+
+    public SearchResults searchAProduct(String product) {
+        sendText(product, searchInput);
+        clickOnElement(searchButton);
+        return new SearchResults(driver);
+    }
+
+
 }

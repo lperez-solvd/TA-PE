@@ -1,22 +1,19 @@
 package solvd.com;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import solvd.com.pages.*;
 
-import java.time.Duration;
 
 public class SignInTest extends AbstractTest {
 
-    @Test
+    @Test()
     public void signInWithCorrectCredentials() {
         // Set the path to the ChromeDriver executable
 
         HomePage home = new HomePage(getDriver());
         SignInPage signin = home.clickSingInButton();
-        signin.enterEmail("lperez22@google.com");
+        signin.enterEmail(getUserEmail());
         signin.enterPassword("1LuPoIo4");
 
         SignInSuccessPage signinSuccess = signin.clickSubmitButton();

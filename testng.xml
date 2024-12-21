@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="ParallelSuite" parallel="methods" thread-count="4">
+
+    <!-- Independent tests that can run in parallel -->
+    <test name="IndependentTests" parallel="classes" thread-count="4">
+        <classes>
+            <class name="solvd.com.AddProductTest"/>
+            <class name="solvd.com.DiscardProductTest"/>
+            <class name="solvd.com.SearchProductTests"/>
+        </classes>
+    </test>
+
+    <!-- Test for CreateAccountTests -->
+    <test name="CreateAccountTests">
+        <classes>
+            <class name="solvd.com.CreateAccountTests"/>
+        </classes>
+    </test>
+
+    <!-- Test for SignInTest, which depends on CreateAccountTests -->
+    <test name="SignInTest">
+        <classes>
+            <class name="solvd.com.SignInTest"/>
+        </classes>
+    </test>
+
+</suite>
+

@@ -15,8 +15,11 @@ public class DiscardProductTest extends AbstractTest {
         home.clickAddToCartButton();
 
         home.clickOnCart();
-        home.deleteFirstElementInCart();
-      //  home.acceptDeletion();
+
+        // use an alternative wait because element loading process
+        home.alternativeDeleteFirstElementInCart();
+
+        home.acceptDeletion();
 
         Assert.assertEquals(home.getCartMessage(), "You have no items in your shopping cart.");
 
