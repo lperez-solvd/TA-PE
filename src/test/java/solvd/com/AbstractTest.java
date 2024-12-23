@@ -8,8 +8,11 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
+import solvd.com.utils.ScreenshotUtil;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.UUID;
 
@@ -85,8 +88,14 @@ public class AbstractTest {
     }
 
     @AfterMethod
-    public void quitDriver() {
+    public void quitDriver(ITestResult result) throws IOException {
         WebDriver currentDriver = driver.get();
+
+        if (ITestResult.FAILURE == result.getStatus()) {
+            // Take a screenshot if the test failed
+            ScreenshotUtil.captureScreenshot(currentDriver, result.getName());
+        }
+
         if (currentDriver != null) {
             currentDriver.quit();
             LOGGER.info("Driver quit");
