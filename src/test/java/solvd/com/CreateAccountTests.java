@@ -10,6 +10,7 @@ import solvd.com.pages.HomePage;
 public class CreateAccountTests extends AbstractTest {
 
     @Test
+
     public void createAccount() {
 
         HomePage home = new HomePage(getDriver());

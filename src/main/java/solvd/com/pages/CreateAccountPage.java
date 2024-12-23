@@ -3,9 +3,12 @@ package solvd.com.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CreateAccountPage extends AbstractPage {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CreateAccountPage.class);
 
 
     @FindBy(xpath = "//input[@name='firstname']")
@@ -44,6 +47,8 @@ public class CreateAccountPage extends AbstractPage {
     }
 
     public void enterEmail(String email) {
+
+        LOGGER.debug("The email I'm using is: {}", email);
         sendText(email, emailInput);
     }
 

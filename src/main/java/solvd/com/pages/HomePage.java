@@ -44,8 +44,6 @@ public class HomePage extends AbstractPage {
     }
 
 
-
-
     public CreateAccountPage clickCreateAccountButton() {
         clickOnElement(createAccountButton);
         return new CreateAccountPage(driver);
@@ -99,9 +97,22 @@ public class HomePage extends AbstractPage {
         return getTextFromElement(cartMessage);
     }
 
+    public void clickSearchButton() {
+
+
+
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        // Wait for the search button to be clickable
+        WebElement searchButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".action.search")));
+        clickOnElement(searchButton);
+
+    }
+
     public SearchResults searchAProduct(String product) {
         sendText(product, searchInput);
-        clickOnElement(searchButton);
+        clickSearchButton();
         return new SearchResults(driver);
     }
 

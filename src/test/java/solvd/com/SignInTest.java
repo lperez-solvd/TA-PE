@@ -17,7 +17,7 @@ public class SignInTest extends AbstractTest {
         signin.enterPassword("1LuPoIo4");
 
         SignInSuccessPage signinSuccess = signin.clickSubmitButton();
-        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+
         Assert.assertTrue(signinSuccess.getWelcomeMessage().contains("Lucas Perez"));
 
     }
